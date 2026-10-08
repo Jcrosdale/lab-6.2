@@ -43,6 +43,22 @@ function fetchProductReviews(productId: number) {
 
 
 // fetchSalesReport(): Simulates fetching a sales report with totalSales, unitsSold, and averagePrice.
+function fetchSalesReport(totalSales: number, unitsSold: number, averagePrice: number) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (Math.random() < 0.8) {
+                // Resolve the Promise with a mock sales report after a 1-second delay.
+                resolve([
+                    { totalSales: 500, unitsSold: 50, averagePrice: 20 },
+                    { totalSales: 200, unitsSold: 75, averagePrice: 5 },
+                ])
+            } else {
+                // Reject randomly with an error message, e.g., "Failed to fetch sales report".
+                reject('Failed to fetch sales report')
+            }
+        }, 1000)
 
-// Resolve the Promise with a mock sales report after a 1-second delay.
-// Reject randomly with an error message, e.g., "Failed to fetch sales report".
+    })
+}
+
+
