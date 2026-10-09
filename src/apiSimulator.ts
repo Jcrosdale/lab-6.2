@@ -1,5 +1,5 @@
 // NetworkError for network-related issues.
-class NetworkError extends Error {
+export class NetworkError extends Error {
     constructor(message: string) {
         super(message);
         this.name = "NetworkError";
@@ -7,7 +7,7 @@ class NetworkError extends Error {
 }
 
 // DataError for data-related issues (e.g., missing fields in the API response).
-class DataError extends Error {
+export class DataError extends Error {
     constructor(message: string) {
         super(message);
         this.name = "DataError";
