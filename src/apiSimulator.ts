@@ -7,6 +7,12 @@ class NetworkError extends Error {
 }
 
 // DataError for data-related issues (e.g., missing fields in the API response).
+class DataError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "DataError";
+    }
+}
 
 // Create the following functions in apiSimulator.ts, ensuring each returns a Promise:
 
