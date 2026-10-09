@@ -25,20 +25,19 @@ function displayData() {
             // Fetch reviews
             console.log('Product Reviews:', reviews);
             return fetchSalesReport();
-            })
         })
         .then((salesReport) => {
             // Fetch sales report
             console.log('Sales Report:', salesReport);
-            return
         })
         .catch((error) => {
             // Display error
-            console.error('Failed to call API:'), error);
-        })
+            console.error('Failed to call API:', error);
+})
         .finally(() => {
             console.log('All API calls have been done.');
-        )
+});
 
+    }
 
 displayData();
