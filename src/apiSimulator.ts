@@ -28,7 +28,7 @@ export const fetchProductCatalog = (): Promise<{ id: number; name: string; price
                     { id: 2, name: 'Tripod', price: 20 },
                 ])
             } else {
-                reject('Failed to fetch product catalog.');
+                reject(new NetworkError('Failed to fetch product catalog.'));
             }
     }, 1000)
     });
@@ -49,7 +49,7 @@ export const fetchProductReviews = (productId: number): Promise<{ productId: num
                 ])
             } else {
                 // Reject the Promise randomly with an error message, e.g., "Failed to fetch reviews for product ID ${productId}".
-                reject(`Failed to fetch reviews for product ID: ${productId}.`)
+                reject(new NetworkError(`Failed to fetch reviews for product ID: ${productId}.`));
             }
         }, 1500)
 
@@ -68,7 +68,7 @@ export const fetchSalesReport = (): Promise<{ totalSales: number; unitsSold: num
                 )
             } else {
                 // Reject randomly with an error message, e.g., "Failed to fetch sales report".
-                reject('Failed to fetch sales report')
+                reject(new NetworkError('Failed to fetch sales report'));
             }
         }, 1000)
 

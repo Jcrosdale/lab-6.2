@@ -9,6 +9,10 @@ import { fetchProductReviews } from './apiSimulator.js'
 // After fetching products and reviews, retrieve the sales report using fetchSalesReport().
 import { fetchSalesReport } from './apiSimulator.js'
 
+import { NetworkError } from './apiSimulator.js';
+
+import { DataError } from './apiSimulator.js';
+
 //Write a Function to Handle API Calls and Display Data:
 function displayData() {
     return fetchProductCatalog()
@@ -32,13 +36,18 @@ function displayData() {
         })
         .catch((error) => {
             // Display error
-            console.error('Failed to call API:', error);
-})
+            if (error instanceof NetworkError) {
+                console.error('Network problem:', error.message);
+            } else if (error instanceof DataError) {
+                console.error('Data problem:', error.message);
+            } else {
+                console.error('Unresolved Error:', error);
+            }
+        })
         .finally(() => {
             console.log('All API calls have been done.');
-});
+        });
 
-    }
+}
 
 displayData();
-
