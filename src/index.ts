@@ -12,6 +12,15 @@ import { fetchSalesReport } from './apiSimulator.js'
 //Write a Function to Handle API Calls and Display Data:
 function displayData() {
     return fetchProductCatalog()
+        .then((products) => {
+            console.log('Product Catalog:', products);
+
+            return Promise.all(
+                products.map((product) => {
+                    return fetchProductReviews(product.id);
+                })
+            );
+        })
         .then((reviews) => {
             // Fetch reviews
             console.log('Product Reviews:', reviews);
