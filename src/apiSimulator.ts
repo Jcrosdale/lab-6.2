@@ -1,7 +1,7 @@
 // Create the following functions in apiSimulator.ts, ensuring each returns a Promise:
 
 // fetchProductCatalog(): Simulates fetching a list of products, each with id, name, and price.
-function fetchProductCatalog() {
+export const fetchProductCatalog = (): Promise<{ id: number; name: string; price: number }[]> => {
     return new Promise((resolve, reject) => {
         // Resolve the Promise with an array of mock products after a 1-second delay.
         setTimeout(() => {
@@ -14,8 +14,7 @@ function fetchProductCatalog() {
             } else {
                 reject('Failed to fetch product catalog.');
             }
-
-        }, 1000)
+    }, 1000)
     });
 };
 
@@ -23,18 +22,18 @@ function fetchProductCatalog() {
 
 // fetchProductReviews(productId: number): Simulates fetching reviews for a product.
 
-function fetchProductReviews(productId: number) {
+export const fetchProductReviews = (productId: number): Promise<{ productId: number; rating: number }[]> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (Math.random() < 0.8) {
                 // Resolve the Promise with an array of reviews after a 1.5-second delay.
                 resolve([
-                    { id: 1, rating: 4 },
-                    { id: 2, rating: 2 },
+                    { productId, rating: 4 },
+                    { productId, rating: 2 },
                 ])
             } else {
                 // Reject the Promise randomly with an error message, e.g., "Failed to fetch reviews for product ID ${productId}".
-                reject(`Failed to fetch reviews for product ID ${productId}.`)
+                reject(`Failed to fetch reviews for product ID: ${productId}.`)
             }
         }, 1500)
 
@@ -43,15 +42,14 @@ function fetchProductReviews(productId: number) {
 
 
 // fetchSalesReport(): Simulates fetching a sales report with totalSales, unitsSold, and averagePrice.
-function fetchSalesReport(totalSales: number, unitsSold: number, averagePrice: number) {
+export const fetchSalesReport = (): Promise<{ totalSales: number; unitsSold: number; averagePrice: number }> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (Math.random() < 0.8) {
                 // Resolve the Promise with a mock sales report after a 1-second delay.
-                resolve([
-                    { totalSales: 500, unitsSold: 50, averagePrice: 20 },
-                    { totalSales: 200, unitsSold: 75, averagePrice: 5 },
-                ])
+                resolve(
+                    { totalSales: 500, unitsSold: 50, averagePrice: 100 }
+                )
             } else {
                 // Reject randomly with an error message, e.g., "Failed to fetch sales report".
                 reject('Failed to fetch sales report')
