@@ -11,6 +11,25 @@ import { fetchSalesReport } from './apiSimulator.js'
 
 //Write a Function to Handle API Calls and Display Data:
 function displayData() {
-    return 
+    return fetchProductCatalog()
+        .then((reviews) => {
+            // Fetch reviews
+            console.log('Product Reviews:', reviews);
+            return fetchSalesReport();
+            })
+        })
+        .then((salesReport) => {
+            // Fetch sales report
+            console.log('Sales Report:', salesReport);
+            return
+        })
+        .catch((error) => {
+            // Display error
+            console.error('Failed to call API:'), error);
+        })
+        .finally(() => {
+            console.log('All API calls have been done.');
+        )
 
-}
+
+displayData();
