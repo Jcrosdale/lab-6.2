@@ -1,3 +1,13 @@
+// NetworkError for network-related issues.
+class NetworkError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "NetworkError";
+    }
+}
+
+// DataError for data-related issues (e.g., missing fields in the API response).
+
 // Create the following functions in apiSimulator.ts, ensuring each returns a Promise:
 
 // fetchProductCatalog(): Simulates fetching a list of products, each with id, name, and price.
